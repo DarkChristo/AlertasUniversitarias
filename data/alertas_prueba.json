@@ -1,0 +1,8 @@
+[
+  {"level": "info", "zone": "Campus central", "text": "Simulacro programado a las 3 p. m."},
+  {"level": "aviso", "zone": "Biblioteca", "text": "Cierre anticipado por mantenimiento"},
+  {"level": "aviso", "zone": "Parqueadero", "text": "Vehiculo mal estacionado bloquea la salida"},
+  {"level": "critica", "zone": "Bloque de ingenierias", "text": "Evacuar el edificio por la ruta señalizada"},
+  {"level": "critica", "zone": "Laboratorios", "text": "Fuga de gas, alejarse de la zona"},
+  {"level": "info", "zone": "Cafeteria", "text": "Servicio suspendido temporalmente"}
+]

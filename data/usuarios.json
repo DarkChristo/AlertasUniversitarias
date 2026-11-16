@@ -1,0 +1,39 @@
+{
+  "usuarios": [
+    {
+      "usuario": "seguridad",
+      "nombre": "Seguridad Universitaria",
+      "rol": "emisor",
+      "salt": "5709cdf11f937011c46a0c068a163fe1",
+      "hash": "b1e8ad0e855b07e98b00a57d1d581f64c3a93dea0067e426e93fea62750719e6"
+    },
+    {
+      "usuario": "estudiante1",
+      "nombre": "Estudiante 1",
+      "rol": "receptor",
+      "salt": "b38bedab37fb2f67622e258ba706374c",
+      "hash": "cfc1f01ff54a3e8cec7323e1a29833695d05056ab37f86eb3060706bd1ce8341"
+    },
+    {
+      "usuario": "estudiante2",
+      "nombre": "Estudiante 2",
+      "rol": "receptor",
+      "salt": "c0ed104b15410390cc5614fc46454dce",
+      "hash": "ef3c0bf75b95a0386ad6d4ac14562d3d5d4737b2f112f011962c350508f8feda"
+    },
+    {
+      "usuario": "estudiante3",
+      "nombre": "Estudiante 3",
+      "rol": "receptor",
+      "salt": "ebc23974365dcfc60687cdc7d9b46545",
+      "hash": "523103beaad739cba374ed7535d12078303ea5e037f822ef54b0d0ab7c4b4d96"
+    },
+    {
+      "usuario": "docente",
+      "nombre": "Docente",
+      "rol": "receptor",
+      "salt": "7973b77f619ffecf79f0e0bac2ac1987",
+      "hash": "fa85cff75ae923b6bd75625a6a8312ea202d933859731e5755bbf23ff3000569"
+    }
+  ]
+}
