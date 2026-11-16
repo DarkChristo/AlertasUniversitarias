@@ -1,3 +1,48 @@
+INSTRUCCIONES PARA EJECUTAR EL SISTEMA:
+1. Configuración Inicial y Requisitos
+Antes de iniciar la aplicación, asegúrese de cumplir con los siguientes requisitos en todos los equipos (emisor y receptores) para garantizar la comunicación mediante IP multicast: 
+•	Red Local: Conecte todos los equipos a la misma red (se recomienda un hotspot Wi-Fi en la banda de 2,4 GHz). 
+•	Sincronización: Sincronice los relojes de los equipos (Configuración → Hora e idioma → Sincronizar ahora). 
+•	Firewall: Otorgue permisos a Python en el firewall del sistema operativo, tanto para redes públicas como privadas. 
+•	Ejecución: Abra una terminal en la carpeta del proyecto y ejecute el comando python app.py. 
+2. Uso del Sistema: Rol Emisor (Seguridad)
+Este perfil está diseñado para el personal encargado de enviar los avisos institucionales a la comunidad.
+•	Inicio de sesión: En la pantalla de login, ingrese el usuario seguridad y su contraseña autorizada (si es incorrecta, el sistema denegará el acceso). 
+•	Panel de control: Una vez dentro, visualizará el panel de envío.
+•	Envío de alertas:
+•	Seleccione el nivel de la alerta y una plantilla prestablecida (por ejemplo, nivel crítico: "Laboratorios, fuga de gas") o redacte una de nivel aviso o informativa. 
+•	Haga clic en el botón Enviar alerta. El mensaje se enviará una sola vez al grupo multicast. 
+•	Pruebas de ráfaga: Para evaluar la red, puede utilizar la función de ráfaga configurando una cantidad (ej. 30 alertas) y un intervalo (ej. 200 ms). 
+•	Estado: Mientras el emisor esté abierto, enviará automáticamente "latidos" (heartbeats) cada segundo para que los receptores sepan que está en línea. 
+3. Uso del Sistema: Rol Receptor (Estudiantes)
+Este perfil corresponde a los usuarios que reciben las notificaciones en sus equipos.
+1.	Inicio de sesión: Ingrese sus credenciales de usuario (por ejemplo, estudiante1, estudiante2 o estudiante3). 
+2.	Configuración de interfaz: En el campo «IP de mi interfaz», escriba la dirección IP de su adaptador Wi-Fi (ej. 192.168.137.x). La pantalla pasará al estado "Esperando alertas". 
+3.	Visualización de alertas: Las notificaciones aparecerán de inmediato. Si la alerta es de nivel crítico, se mostrará resaltada en un banner de color rojo. 
+4.	Panel de estadísticas: La interfaz mostrará en tiempo real:
+o	Recibidas: Total de alertas que han llegado con éxito. 
+o	Huecos: Contador de paquetes perdidos (basado en los números de secuencia y los latidos del emisor). 
+o	Duplicados: Alertas recibidas más de una vez. 
+o	Estado: Un indicador visual dirá «Emisor: ACTIVO» si se están recibiendo los latidos. 
+1.	Simulación de fallas: Para realizar pruebas, ingrese un porcentaje en el campo Pérdida simulada (ej. 30) y presione Aplicar. Esto forzará al sistema a descartar temporalmente esa proporción de alertas. 
+4. Solución de Problemas Frecuentes
+•	El receptor no recibe alertas: Verifique que la dirección ingresada en «IP de mi interfaz» sea correcta. Compruebe que la red Wi-Fi esté transmitiendo en 2,4 GHz (en redes de 5 GHz hay alta pérdida de paquetes) y confirme que el firewall no esté bloqueando a Python. 
+•	Alertas no deseadas o rechazadas: Si alguien intenta enviar alertas sin estar autorizado (intruso), el sistema las ignorará gracias a la validación de firma HMAC y el contador de Rechazadas aumentará en la pantalla. 
+•	Fallas de reconexión: Si se desconecta y reconecta el Wi-Fi abruptamente, es posible que el adaptador de red no recupere el grupo multicast de inmediato. En caso de persistir, reinicie la aplicación
+5. Consideraciones Técnicas y Limitaciones
+Para comprender el alcance y funcionamiento interno del Sistema de Alertas Universitarias, los usuarios y administradores deben tener en cuenta los siguientes aspectos técnicos:
+•	Eficiencia de red (Multicast): El sistema está diseñado para que el costo del emisor no crezca con el número de equipos. Una alerta se envía una sola vez a la red y es recibida simultáneamente por todos los usuarios suscritos al grupo. 
+•	Garantía de entrega (UDP): El protocolo subyacente prioriza la velocidad y no garantiza la entrega de todos los paquetes. Aunque el sistema no recupera lo perdido, utiliza números de secuencia y latidos constantes para detectar y medir exactamente qué información no llegó. 
+•	Ausencia de retransmisión: En la versión actual de la aplicación no existen reenvíos automáticos. Si la red falla severamente (por ejemplo, al usar bandas inestables de 5 GHz 
+en lugar de las recomendadas de 2,4 GHz), la pérdida se registra pero no se recupera. La adición de confirmaciones negativas (NACK) se contempla como una mejora futura. 
+•	Gestión de credenciales: El inicio de sesión se realiza de forma local en cada equipo y la clave de firma de seguridad (HMAC) se encuentra almacenada en un archivo de configuración, por lo que no se depende de un servidor central de usuarios.
+
+
+
+
+
+
+
 # Sistema de alertas universitarias con multicast
 
 Proyecto final de Sistemas Distribuidos. Una aplicación con interfaz gráfica (Tkinter, Python) donde un
